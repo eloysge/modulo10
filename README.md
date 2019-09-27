@@ -43,3 +43,8 @@
 - yarn add prettier eslint-config-prettier eslint-plugin-prettier babel-eslint -D
 
 # Ajustar configurações do .eslintrc.js
+
+# Instalação do babel-plugin-root-import
+
+- yarn add babel-plugin-root-import -D
+- yarn add eslint-import-resolver-babel-plugin-root-import -D
