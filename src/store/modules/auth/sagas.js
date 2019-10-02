@@ -29,15 +29,22 @@ export function* signIn({ payload }) {
 export function* signUp({ payload }) {
   try {
     const { name, email, password } = payload;
-    yield call(api.post, 'users', {
+    const response = yield call(api.post, 'users', {
       name,
       email,
       password,
-      provider: true,
+      provider: false,
     });
+
+    const { error } = response.data;
+    if (error) {
+      Alert.alert('Auth', error);
+      yield put(signFailure());
+      return;
+    }
+
     yield put(signUpSuccess());
     // history.push('/');
-    //
   } catch (err) {
     Alert.alert('Auth', err.message);
     yield put(signFailure());

@@ -2,6 +2,8 @@
  * yarn add react-navigation react-native-gesture-handler (rotas/navegação)
  * yarn add jetifier -D (compatibilização com android X)
  * yarn run jetify
+ *
+ * console.disableYellowBox = true; (elimina mensagens de "warning" no emulador)
  */
 import React from 'react';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -11,6 +13,9 @@ import './config/ReactotronConfig';
 import { store, persistor } from './store';
 
 import Routes from './routes';
+
+// eslint-disable-next-line no-console
+console.disableYellowBox = true;
 
 export default function App() {
   return (
