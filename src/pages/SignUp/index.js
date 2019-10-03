@@ -10,7 +10,7 @@
  */
 import React, { useRef, useState } from 'react';
 import { Image } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import logo from '~/assets/logo.png';
 import Background from '~/components/Background';
@@ -29,6 +29,7 @@ export default function SignUp({ navigation }) {
   const dispatch = useDispatch();
   const emailRef = useRef();
   const passwordRef = useRef();
+  const loading = useSelector(state => state.auth.loading);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -76,7 +77,9 @@ export default function SignUp({ navigation }) {
               value={pass}
               onChangeText={setPass}
             />
-            <SubmitButton onPress={handleSubmit}>Criar</SubmitButton>
+            <SubmitButton loading={loading} onPress={handleSubmit}>
+              Criar
+            </SubmitButton>
           </Form>
           <SignLink
             onPress={() => {

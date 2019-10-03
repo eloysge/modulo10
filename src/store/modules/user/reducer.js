@@ -13,6 +13,11 @@ export default function user(state = INITIAL_STATE, action) {
         draft.loading = false;
         break;
       }
+      case '@auth/SIGN_IN_FAILURE': {
+        draft.profile = null;
+        draft.loading = false;
+        break;
+      }
       case '@user/UPDATE_PROFILE_REQUEST': {
         draft.loading = true;
         break;
