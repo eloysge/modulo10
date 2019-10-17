@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * yarn add react-native-linear-gradient
  * react-native link react-native-linear-gradient (enquanto não estiver atualizada, precisará de fazer o link)

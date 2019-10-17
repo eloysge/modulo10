@@ -14,16 +14,26 @@ export function* signIn({ payload }) {
       email,
       password,
     });
-    const { token, user } = response.data;
+
+    const { error, token, user } = response.data;
+
+    if (error) {
+      Alert.alert('Auth', error);
+      yield put(signFailure());
+      return;
+    }
+
     if (user.provider) {
       Alert.alert('Auth', 'Usuário não pode ser um prestador de serviço.');
       yield put(signFailure());
       return;
     }
     api.defaults.headers.Authorization = `Bearer ${token}`;
+    //
     // yield delay(3000);
     yield put(signInSuccess(token, user));
     // history.push('/dashboard');
+    //
   } catch (err) {
     Alert.alert('Auth', 'Falha na autenticação. Verifique seus dados.');
     yield put(signFailure());

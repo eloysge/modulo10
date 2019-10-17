@@ -28,6 +28,7 @@ export default function user(state = INITIAL_STATE, action) {
         break;
       }
       case '@user/UPDATE_PROFILE_FAILURE': {
+        draft.profile = state.profile;
         draft.loading = false;
         break;
       }
