@@ -11,6 +11,7 @@ import { Container, Title, List } from './styles';
 
 function Dashboard({ isFocused }) {
   const [appointments, setAppointments] = useState([]);
+  // const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
 
   async function loadAppointments() {
     const response = await api.get('appointments');
