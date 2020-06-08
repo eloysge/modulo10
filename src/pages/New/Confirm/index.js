@@ -14,6 +14,8 @@ export default function Confirm({ navigation }) {
   const provider = navigation.getParam('provider');
   const time = navigation.getParam('time');
 
+  console.tron.log(time);
+
   const dateFormatted = useMemo(
     () => formatRelative(parseISO(time), new Date(), { locale: pt }),
     [time]
@@ -33,7 +35,7 @@ export default function Confirm({ navigation }) {
         navigation.navigate('Dashboard');
       }
     } catch (err) {
-      Alert.alert('Confirm', 'Falha ao adicionar agendamento');
+      Alert.alert('Server Error', 'Não foi possivel atualizar seu perfil.');
     }
   }
 

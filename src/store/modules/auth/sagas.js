@@ -57,6 +57,7 @@ export function* signUp({ payload }) {
     }
 
     yield put(signUpSuccess());
+    //
     // history.push('/');
   } catch (err) {
     Alert.alert('Auth', err.message);

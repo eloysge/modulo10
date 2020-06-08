@@ -8,7 +8,8 @@
  *
  * (sera necessarios: react-native run ios, novamente.)
  */
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -34,6 +35,12 @@ export default function SignUp({ navigation }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+
+  useEffect(() => {
+    setName('');
+    setEmail('');
+    setPass('');
+  }, [loading]);
 
   function handleSubmit() {
     dispatch(signUpRequest(name, email, pass));
@@ -92,3 +99,9 @@ export default function SignUp({ navigation }) {
     </>
   );
 }
+
+SignUp.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
